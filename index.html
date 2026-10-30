@@ -12,6 +12,7 @@
         /* --- CSS VARIABLES & RESET --- */
         :root {
             --primary: #ff3e3e; /* Racing Red */
+            --yellow: #ffcc00; /* Bold Yellow */
             --black: #0a0a0a;
             --white: #ffffff;
             --gray: #f8f8f8;
@@ -50,7 +51,7 @@
         }
         nav a:hover { color: var(--primary); }
 
-        /* --- HERO SECTION (HOME) --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -139,23 +140,19 @@
             box-shadow: 0 20px 40px rgba(255, 62, 62, 0.3);
         }
 
-        /* --- FILTER SYSTEM --- */
-        .filter-container {
-            display: flex; justify-content: center; gap: 15px;
-            margin: 50px 0; flex-wrap: wrap;
-        }
+        /* --- COLLECTION SECTION --- */
+        section { padding: 120px 10% 60px; }
+        .small-title { font-weight: 700; font-size: 0.8rem; letter-spacing: 4px; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; }
+        .collection-heading { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
+        .collection-heading h2 { font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; }
+
+        .filter-container { display: flex; justify-content: center; gap: 15px; margin: 50px 0; flex-wrap: wrap; }
         .filter-btn {
             padding: 12px 30px; border: 2px solid var(--black); background: transparent;
             font-weight: 700; font-size: 0.8rem; cursor: pointer;
             transition: var(--transition); text-transform: uppercase; letter-spacing: 1px;
         }
         .filter-btn.active, .filter-btn:hover { background: var(--black); color: var(--white); }
-
-        /* --- COLLECTION SECTION --- */
-        section { padding: 120px 10% 60px; }
-        .small-title { font-weight: 700; font-size: 0.8rem; letter-spacing: 4px; color: var(--primary); margin-bottom: 15px; text-transform: uppercase; }
-        .collection-heading { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
-        .collection-heading h2 { font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; }
 
         .cars { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px; }
         
@@ -175,7 +172,7 @@
         .car-info h3 { font-size: 1.6rem; margin-bottom: 15px; letter-spacing: -0.5px; }
         .car-info p { font-size: 0.9rem; color: var(--dark-gray); }
 
-        /* --- MODAL DETAIL (POP-UP) --- */
+        /* --- MODAL DETAIL --- */
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); display: none;
@@ -198,11 +195,29 @@
         .spec-item { display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f9f9f9; padding-bottom: 8px; font-size: 0.9rem; }
         .spec-item span:first-child { font-weight: 700; color: var(--dark-gray); }
 
-        /* --- ABOUT & FOOTER --- */
+        /* --- ABOUT SECTION --- */
         .about-section { text-align: center; background: var(--black); color: var(--white); padding: 150px 10%; }
-        .about-description { max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem; font-weight: 300; opacity: 0.8; }
-        .about-line { width: 60px; height: 3px; background: var(--primary); margin: 0 auto 30px; }
+        .about-line { width: 60px; height: 3px; background: var(--primary); margin: 30px auto; }
         
+        .about-description { 
+            max-width: 850px; margin: 0 auto 40px; font-size: 1.1rem; 
+            font-weight: 300; opacity: 0.9; line-height: 1.8;
+        }
+
+        .creator-card {
+            max-width: 800px; margin: 50px auto; padding: 40px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            background: rgba(255,255,255,0.02);
+            position: relative;
+            text-align: left;
+        }
+        .creator-card::before {
+            content: 'CREATOR INFO'; position: absolute; top: -12px; left: 30px;
+            background: var(--primary); color: white; padding: 2px 15px;
+            font-size: 0.65rem; font-weight: 900; letter-spacing: 2px;
+        }
+
+        /* --- FOOTER --- */
         footer { padding: 60px 10%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; }
 
         /* --- RESPONSIVE --- */
@@ -246,8 +261,8 @@
                     <p>Iconic Builds</p>
                 </div>
                 <div class="stat-item">
-                    <h4>800+</h4>
-                    <p>Total HP</p>
+                    <h4>850+</h4>
+                    <p>Max HP</p>
                 </div>
                 <div class="stat-item">
                     <h4>2026</h4>
@@ -266,7 +281,6 @@
                 <p class="small-title">The Archive</p>
                 <h2>TUNED <span>MACHINES</span></h2>
             </div>
-            <!-- Filter Buttons -->
             <div class="filter-container">
                 <button class="filter-btn active" onclick="filterCars('all', this)">All Builds</button>
                 <button class="filter-btn" onclick="filterCars('jp', this)">Japanese</button>
@@ -398,7 +412,7 @@
         </div>
     </section>
 
-    <!-- MODAL STRUCTURE -->
+    <!-- MODAL DETAIL -->
     <div class="modal" id="carModal" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -423,18 +437,35 @@
     <section class="about-section" id="about">
         <p class="small-title">Tuning Philosophy</p>
         <h2>NOT JUST FAST.<br><span>BUT UNIQUE.</span></h2>
-        <p class="about-description">
-            เราเชื่อว่ารถยนต์คือส่วนขยายของตัวตน 
-            การแต่งรถจึงไม่ใช่แค่การเพิ่มความเร็ว แต่คือการสร้างเอกลักษณ์ที่ไม่มีใครเหมือน 
-            ทุกคันใน Archive นี้คือข้อพิสูจน์ของความประณีตและแรงผลักดันทางวิศวกรรม
-        </p>
+        
         <div class="about-line"></div>
-        <p>SPORT TUNER ARCHIVE © 2026</p>
+
+        <p class="about-description">
+            <strong>THE ARCHIVE CONCEPT:</strong> เว็บไซต์นี้ถูกพัฒนาขึ้นเพื่อเป็นคลังข้อมูลดิจิทัลสำหรับผู้ที่หลงใหลในศิลปะแห่งการปรับแต่งยนตรกรรม 
+            โดยเน้นการสื่อสารผ่านโทนสี <span>Carbon Black, Slate Gray, Racing Red</span> และ <span>Pure White</span> 
+            เพื่อสะท้อนถึงความดุดัน พลังงาน และความแม่นยำที่เป็นหัวใจหลักของโลกแห่งความเร็ว
+        </p>
+
+        <div class="creator-card">
+            <p style="margin-bottom: 10px; font-weight: 700; letter-spacing: 2px; font-size: 0.8rem; opacity: 0.7; color: var(--white);">จัดทำโดย</p>
+            <p style="font-size: 1.6rem; color: var(--primary); font-weight: 900; margin-bottom: 25px; letter-spacing: -1px;">
+                69070353 นาย ปุญญาพัฒน์ แก้วกัณหา
+            </p>
+            
+            <p style="font-size: 0.85rem; color: var(--dark-gray); line-height: 1.8; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; text-align: left;">
+                <strong style="color: var(--white);">หมายเหตุ:</strong> ข้อมูลและรถยนต์ทุกคันที่ปรากฏในคอลเลกชันนี้ 
+                เป็นผลงานที่รวบรวมและคัดสรรมาจากความชื่นชอบและความหลงใหลส่วนตัวของผู้จัดทำ 
+                เพื่อเป็นการรวบรวมสไตล์การตกแต่งที่โดดเด่นและเป็นเอกลักษณ์ 
+                และเพื่อแบ่งปันแรงบันดาลใจให้กับกลุ่มผู้ที่รักในยนตรกรรมประเภท Sport Tuner ทุกคน
+            </p>
+        </div>
+
+        <p style="font-size: 0.7rem; opacity: 0.4; letter-spacing: 3px; margin-top: 40px;">SPORT TUNER ARCHIVE © 2026 EDITION</p>
     </section>
 
     <footer>
-        <div class="footer-logo">SPORT<span>.</span>TUNER</div>
-        <a href="#home">BACK TO TOP ↑</a>
+        <div class="logo">SPORT<span>.</span>TUNER</div>
+        <a href="#home" style="font-weight: 700; font-size: 0.7rem; letter-spacing: 2px;">BACK TO TOP ↑</a>
     </footer>
 
     <script>
@@ -464,12 +495,12 @@
             document.getElementById('specMods').innerText = mods;
             document.getElementById('specDrive').innerText = drive;
             document.getElementById('carModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Lock scroll
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeModal() {
             document.getElementById('carModal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Unlock scroll
+            document.body.style.overflow = 'auto'; 
         }
     </script>
 </body>
