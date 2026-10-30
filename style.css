@@ -1,0 +1,540 @@
+
+/* =================================
+   01. GLOBAL SETTINGS
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --red: #ed3434;
+    --black: #090909;
+    --dark: #151515;
+    --gray: #999999;
+    --white: #ffffff;
+}
+
+body {
+    background: var(--black);
+    color: var(--white);
+    font-family: Arial, sans-serif;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+
+/* =================================
+   02. HEADER / NAVIGATION
+================================= */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 8%;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: rgba(9, 9, 9, 0.97);
+    border-bottom: 1px solid #222;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--red);
+}
+
+
+/* =================================
+   03. HOME / HERO
+================================= */
+
+.hero {
+    min-height: 650px;
+
+    padding: 120px 8%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(9, 9, 9, 1) 5%,
+            rgba(9, 9, 9, 0.75) 45%,
+            rgba(9, 9, 9, 0.1) 100%
+        ),
+        url("images/car1.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-label {
+    color: var(--red);
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 95px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: var(--red);
+}
+
+.hero-description {
+    color: #cccccc;
+    max-width: 450px;
+    line-height: 1.8;
+    margin-top: 25px;
+    font-size: 15px;
+}
+
+.btn {
+    display: inline-block;
+
+    margin-top: 35px;
+    padding: 16px 28px;
+
+    background: var(--red);
+    color: white;
+
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: white;
+    color: black;
+}
+
+.hero-number {
+    position: absolute;
+    bottom: 35px;
+    right: 8%;
+
+    color: #aaaaaa;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+
+/* =================================
+   04. SECTION HEADING
+================================= */
+
+.small-title {
+    color: var(--red);
+    font-size: 12px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.section-heading h2,
+.collection-heading h2 {
+    font-size: 42px;
+    font-weight: 900;
+}
+
+.section-heading h2 span,
+.collection-heading h2 span {
+    color: var(--red);
+}
+
+
+/* =================================
+   05. STORY SECTION
+================================= */
+
+.story-section {
+    padding: 100px 8%;
+}
+
+.story {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 70px;
+    align-items: center;
+
+    margin-top: 45px;
+}
+
+.story-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.story-content {
+    max-width: 500px;
+}
+
+.story-number {
+    color: var(--red);
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.story-content h3 {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.story-content p {
+    color: var(--gray);
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 15px;
+}
+
+
+/* =================================
+   06. COLLECTION SECTION
+================================= */
+
+.collection-section {
+    padding: 100px 8%;
+    background: #111111;
+}
+
+.collection-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 45px;
+}
+
+.collection-description {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+
+/* CAR GRID */
+
+.cars {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+
+/* CAR CARD */
+
+.car-card {
+    background: #191919;
+    overflow: hidden;
+
+    transition: 0.4s;
+}
+
+.car-card:hover {
+    transform: translateY(-8px);
+}
+
+
+/* CAR IMAGE */
+
+.car-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.car-image img {
+    width: 100%;
+    height: 230px;
+
+    object-fit: cover;
+
+    transition: 0.5s;
+}
+
+.car-card:hover img {
+    transform: scale(1.05);
+}
+
+
+/* CAR NUMBER */
+
+.car-index {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    background: var(--red);
+    color: white;
+
+    padding: 8px 13px;
+
+    font-size: 12px;
+}
+
+
+/* CAR DETAILS */
+
+.car-info {
+    padding: 25px;
+}
+
+.tag {
+    color: var(--red);
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.car-info h3 {
+    font-size: 23px;
+    margin: 15px 0;
+}
+
+.car-info p {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =================================
+   07. ABOUT SECTION
+================================= */
+
+.about-section {
+    text-align: center;
+    padding: 120px 8%;
+}
+
+.about-section h2 {
+    font-size: clamp(35px, 6vw, 65px);
+    line-height: 1.15;
+    margin-bottom: 30px;
+}
+
+.about-section h2 span {
+    color: var(--red);
+}
+
+.about-description {
+    color: var(--gray);
+
+    max-width: 650px;
+
+    margin: auto;
+
+    font-size: 15px;
+    line-height: 2;
+}
+
+.about-line {
+    width: 70px;
+    height: 3px;
+
+    background: var(--red);
+
+    margin: 40px auto;
+}
+
+.about-signature {
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 3px;
+}
+
+
+/* =================================
+   08. FOOTER
+================================= */
+
+footer {
+    background: #151515;
+
+    padding: 35px 8%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.footer-logo span {
+    color: var(--red);
+}
+
+footer p {
+    color: #777;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+footer a:hover {
+    color: var(--red);
+}
+
+
+/* =================================
+   09. TABLET RESPONSIVE
+================================= */
+
+@media (max-width: 900px) {
+
+    .cars {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .story {
+        gap: 30px;
+    }
+
+    .collection-heading {
+        gap: 20px;
+    }
+
+}
+
+
+/* =================================
+   10. MOBILE RESPONSIVE
+================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 5%;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 10px;
+    }
+
+    .hero {
+        min-height: 550px;
+        padding: 80px 6%;
+
+        background-position: center;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .story-section,
+    .collection-section {
+        padding: 70px 6%;
+    }
+
+    .story {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .story-image img {
+        height: 280px;
+    }
+
+    .story-content h3 {
+        font-size: 38px;
+    }
+
+    .collection-heading {
+        flex-direction: column;
+        align-items: start;
+        gap: 15px;
+    }
+
+    .section-heading h2,
+    .collection-heading h2 {
+        font-size: 32px;
+    }
+
+    .cars {
+        grid-template-columns: 1fr;
+    }
+
+    .car-image img {
+        height: 240px;
+    }
+
+    .about-section {
+        padding: 80px 6%;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+}
